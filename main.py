@@ -329,8 +329,8 @@ def getName():
 def getTest():
     # code the capturing of the 1 min test file here
     # handle existing 1 min files
-    input_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//test//input.mp3'
-    output_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//test//output.wav'
+    input_file = '5MinCrafts//test//input.mp3'
+    output_file = '5MinCrafts//test//output.wav'
     if os.path.exists(input_file):
         os.remove(input_file)
     if os.path.exists(output_file):
@@ -344,19 +344,19 @@ def getTest():
         return 'No selected file', 400
     if audio_file:
         # Specify the directory where you want to store the uploaded audio file
-        upload_dir = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//test//'
+        upload_dir = '5MinCrafts//test//'
         audio_path = os.path.join(upload_dir, 'input.mp3')
         audio_file.save(audio_path)
 
     # text functionalities -
-    input_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//test//input.mp3'
-    output_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//test//output.wav'
+    input_file = '5MinCrafts//test//input.mp3'
+    output_file = '5MinCrafts//test//output.wav'
     convert_mp3_to_wav(input_file, output_file)
 
     # break file and write name
-    audio_file = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//test//output.wav"
-    output_directory = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//testClips//"
-    test_file_names = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//test.txt"
+    audio_file = "5MinCrafts//test//output.wav"
+    output_directory = "5MinCrafts//testClips//"
+    test_file_names = "5MinCrafts//test.txt"
     split_audio_into_clips(audio_file, output_directory, test_file_names)
 
 @app.route('/enroll', methods=['GET', 'POST'])
@@ -365,8 +365,8 @@ def enroll():
     # handle existing 5 min files
 
     # handle existing 5 min files
-    input_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//input.mp3'
-    output_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//output.wav'
+    input_file = '5MinCrafts//input.mp3'
+    output_file = '5MinCrafts//output.wav'
     if os.path.exists(input_file):
         os.remove(input_file)
     if os.path.exists(output_file):
@@ -380,33 +380,33 @@ def enroll():
         return 'No selected file', 400
     if audio_file:
         # Specify the directory where you want to store the uploaded audio file
-        upload_dir = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//'
+        upload_dir = '5MinCrafts//'
         audio_path = os.path.join(upload_dir, 'input.mp3')
         audio_file.save(audio_path)
 
     # convert the mp3 to wav
-    input_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//input.mp3'
-    output_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//output.wav'
+    input_file = '5MinCrafts//input.mp3'
+    output_file = '5MinCrafts//output.wav'
     convert_mp3_to_wav(input_file, output_file)
 
     # break the 5 min audio into 9 sec clips to train
-    audio_file = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//output.wav"
-    output_directory = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//train//"
-    train_file_names = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//train.txt"
+    audio_file = "5MinCrafts//output.wav"
+    output_directory = "5MinCrafts//train//"
+    train_file_names = "5MinCrafts//train.txt"
     with open('names.txt', 'r') as file:
         name = file.readline().strip()
     split_audio_into_clips_train(audio_file, output_directory, train_file_names, name)
 
     # train the model
-    training_set = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//train//"
-    model_loc = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//models//"
-    training_set_filenames = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//train.txt"
+    training_set = "5MinCrafts//train//"
+    model_loc = "5MinCrafts//models//"
+    training_set_filenames = "5MinCrafts//train.txt"
     train_model_noTXT(training_set, model_loc)
 
     # test on the sample and get accuracy
-    source = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//testClips//"
-    modelpath = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//models//"
-    test_file = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//5MinCrafts//test.txt"
+    source = "5MinCrafts//testClips//"
+    modelpath = "5MinCrafts//models//"
+    test_file = "5MinCrafts//test.txt"
     percent = test_model_for_enroll(source, modelpath, test_file)
     return percent
 
@@ -414,8 +414,8 @@ def enroll():
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     # call functionalities -
-    input_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//AudioMedium//input.mp3'
-    output_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//AudioMedium//output.wav'
+    input_file = 'AudioMedium//input.mp3'
+    output_file = 'AudioMedium//output.wav'
     if os.path.exists(input_file):
         os.remove(input_file)
     if os.path.exists(output_file):
@@ -429,26 +429,32 @@ def predict():
         return 'No selected file', 400
     if audio_file:
         # Specify the directory where you want to store the uploaded audio file
-        upload_dir = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//AudioMedium//'
+        upload_dir = 'AudioMedium//'
         audio_path = os.path.join(upload_dir, 'input.mp3')
         audio_file.save(audio_path)
 
     # text functionalities -
-    input_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//AudioMedium//input.mp3'
-    output_file = 'C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//AudioMedium//output.wav'
+    input_file = 'AudioMedium//input.mp3'
+    output_file = 'AudioMedium//output.wav'
     convert_mp3_to_wav(input_file, output_file)
 
     # break file and write name
-    audio_file = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//AudioMedium//output.wav"
-    output_directory = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//AudioMedium//FinalPredFiles/"
+    audio_file = "AudioMedium//output.wav"
+    output_directory = "AudioMedium//FinalPredFiles/"
     split_audio_into_clips(audio_file, output_directory)
 
     # call test function
-    source = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//AudioMedium//FinalPredFiles//"
-    modelpath = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//trained_models//"
-    test_file = "C://xampp//htdocs//TvsInternshipCodes//Phase2//Final//AudioMedium//FinalPredFiles.txt"
+    source = "AudioMedium//FinalPredFiles//"
+    modelpath = "trained_models//"
+    test_file = "AudioMedium//FinalPredFiles.txt"
     preds = test_model(source, modelpath, test_file)
     return preds
+
+
+@app.route('/greet', methods=['GET', 'POST'])
+def greet():
+    print("Hello")
+    return "Hello"
 
 
 if __name__ == "__main__":
